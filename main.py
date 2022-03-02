@@ -1,17 +1,13 @@
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
+from player_service import get_all_players
 
 app = FastAPI()
 
 
 @app.get("/players")
 async def get_players():
-    return {
-        "id": "1",
-        "name": "Emerson",
-        "position": "Goalkeeper",
-        "odds": 0.0,
-        "margin": 0.0
-        }
+    return JSONResponse(content=get_all_players())
 
 @app.post("/margins")
 async def post_margins():
